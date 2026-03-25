@@ -1,0 +1,70 @@
+// Copyright 2017 CNRS-UM LIRMM
+// Copyright 2017 Arnaud TANGUY <arnaud.tanguy@lirmm.fr>
+//
+// This file is part of mesh_sampling.
+//
+// mesh_sampling is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Lesser General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// mesh_sampling is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public License
+// along with mesh_sampling.  If not, see <http://www.gnu.org/licenses/>.
+
+#include <iostream>
+#include <mesh_sampling/assimp_scene.h>
+#include <mesh_sampling/mesh_sampling.h>
+#include <mesh_sampling/weighted_random_sampling.h>
+
+using namespace mesh_sampling;
+
+void help()
+{
+  std::cout << "Usage: ./example path_to_model number_of_points" << std::endl;
+  exit(1);
+}
+
+int main(int argc, char ** argv)
+{
+  std::string model_path = "";
+  int N = 100000;
+  if(argc > 1)
+  {
+    if(std::string(argv[1]) == "-h" || std::string(argv[1]) == "--help")
+    {
+      help();
+    }
+    else
+    {
+      model_path = argv[1];
+    }
+    if(argc == 3)
+    {
+      N = atoi(argv[2]);
+    }
+  }
+  else
+  {
+    help();
+  }
+
+  MeshSampling sampler(model_path);
+
+  std::cout << "Sampling " << N << " points from " << model_path << std::endl;
+  WeightedRandomSampling sampling_xyz(sampler.mesh(model_path)->scene());
+  auto cloud_xyz = sampling_xyz.weighted_random_sampling(N);
+
+  WeightedRandomSampling sampling_rgb(sampler.mesh(model_path)->scene());
+  auto cloud_rgb = sampling_rgb.weighted_random_sampling(N);
+
+  WeightedRandomSampling sampling_normal(sampler.mesh(model_path)->scene());
+  auto cloud_normal = sampling_normal.weighted_random_sampling(N);
+
+  WeightedRandomSampling sampling_rgb_normal(sampler.mesh(model_path)->scene());
+  auto cloud_rgb_normal = sampling_rgb_normal.weighted_random_sampling(N);
+}

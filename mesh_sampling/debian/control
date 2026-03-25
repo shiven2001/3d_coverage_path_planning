@@ -1,0 +1,37 @@
+Source: mesh-sampling
+Priority: optional
+Maintainer: Arnaud TANGUY <arn.tanguy+ppa@gmail.com>
+Standards-Version: 3.9.5
+Section: libdevel
+Homepage: http://github.com/arntanguy/mesh_sampling
+Vcs-Git: git://github.com/arntanguy/mesh_sampling
+Vcs-Browser: http://github.com/arntanguy/mesh_sampling
+Build-Depends: debhelper (>= 9),
+               pkg-config,
+               cmake,
+               libassimp-dev,
+               doxygen,
+               libeigen3-dev (>= 3.2),
+               libgtest-dev,
+               libqhull-dev
+
+Package: libmesh-sampling-dev
+Section: libdevel
+Architecture: any
+Depends: pkg-config,
+         mesh-sampling (= ${binary:Version}),
+         libeigen3-dev (>= 3.2),
+         libassimp-dev,
+         libgtest-dev,
+         libqhull-dev,
+         ${misc:Depends}
+Description: mesh_sampling Automatic sampling of 3D pointcloud from CAD models
+ mesh_sampling implements samplers that convert from 3D CAD models to PCL pointcloud (PCD)
+
+Package: mesh-sampling
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: mesh_sampling Automatic sampling of 3D pointcloud from CAD models
+ mesh_sampling implements samplers that convert from 3D CAD models to PCL pointcloud (PCD)
