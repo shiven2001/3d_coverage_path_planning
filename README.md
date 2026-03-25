@@ -43,6 +43,10 @@ catkin build three_dimensional_coverage_path_planning --cmake-args -DCPPZMQ_BUIL
 
 If you prefer a stock Noetic image instead of the image above, use `osrf/ros:noetic-desktop-full` as the image name and install dependencies inside the container before `catkin build`.
 
+---
+
+The sections below follow the upstream project's documentation (parameters, workflows, troubleshooting).
+
 ## Data directories
 
 <a name="data_directories"></a>

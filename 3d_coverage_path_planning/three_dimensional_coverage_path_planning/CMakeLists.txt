@@ -19,12 +19,12 @@ find_package(catkin REQUIRED COMPONENTS
   octomap_ros
   pcl_ros
   voxblox_ros
-
+  mesh_to_sampled_point_cloud
   mesh_map
   mbf_mesh_core
-
   mesh_conversions
-  mesh_to_sampled_point_cloud
+  mesh_msgs_conversions
+  # mesh_sampling
   mesh_to_sdf
 
   filters
@@ -36,7 +36,11 @@ find_package(catkin REQUIRED COMPONENTS
   hector_waypoint_order
 
   three_dimensional_coverage_path_planning_msgs
-  )
+)
+
+find_package(gazebo REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(JSONCPP jsoncpp)
 
 
 ## System dependencies are found with CMake's conventions
@@ -102,9 +106,10 @@ catkin_package(
 
   mesh_map
   mbf_mesh_core
-
   mesh_conversions
+  mesh_msgs_conversions
   mesh_to_sampled_point_cloud
+  # mesh_sampling
   mesh_to_sdf
 
   filters
@@ -127,6 +132,8 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${GAZEBO_INCLUDE_DIRS}
+  ${JSONCPP_INCLUDE_DIRS}
 )
 
 
@@ -220,7 +227,7 @@ set(SOURCES
 ## Declare a C++ library
 add_library(${PROJECT_NAME} ${HEADER_FILES} ${SOURCES})
 add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${JSONCPP_LIBRARIES})
 
 ## Declare a C++ executable
 add_executable(${PROJECT_NAME}_node src/${PROJECT_NAME}_node.cpp)
@@ -278,6 +285,6 @@ if (TEST_SELECTOR)
   ## Declare a C++ executable
   add_executable(test_selector_node test/test_selector_node/test_selector_node.cpp)
   add_dependencies(test_selector_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-  target_link_libraries(test_selector_node ${PROJECT_NAME})
+  target_link_libraries(test_selector_node ${PROJECT_NAME} ${GAZEBO_LIBRARIES} ${JSONCPP_LIBRARIES})
 
 endif ()

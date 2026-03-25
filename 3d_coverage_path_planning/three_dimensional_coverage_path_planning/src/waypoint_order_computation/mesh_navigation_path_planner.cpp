@@ -34,7 +34,7 @@ void MeshNavigationPathPlanner::initialize(ros::NodeHandle& nh)
 
   // read map from file defined in "~/mesh_map/mesh_file" with other parameters in namespace "~/mesh_map/"
   mesh_map_ptr_ = boost::make_shared<mesh_map::MeshMap>(tf_buffer);
-  mesh_map_ptr_->readMap(false);
+  mesh_map_ptr_->readMap();
 
   // init planner loader
   planner_plugin_loader_ =

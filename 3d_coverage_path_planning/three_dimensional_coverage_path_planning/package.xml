@@ -62,12 +62,12 @@
   <depend>octomap_ros</depend>
   <depend>pcl_ros</depend>
   <depend>voxblox_ros</depend>
-
+  <depend>mesh_to_sampled_point_cloud</depend>
   <depend>mesh_map</depend>
   <depend>mbf_mesh_core</depend>
-
   <depend>mesh_conversions</depend>
-  <depend>mesh_to_sampled_point_cloud</depend>
+  <depend>mesh_msgs_conversions</depend>
+  <!-- <depend>mesh_sampling</depend> -->
   <depend>mesh_to_sdf</depend>
 
   <depend>filters</depend>

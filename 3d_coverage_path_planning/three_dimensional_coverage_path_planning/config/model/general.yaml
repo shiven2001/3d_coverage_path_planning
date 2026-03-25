@@ -2,14 +2,14 @@
 ### data directory and model paths
 #data_directory:
 
-#complete_mesh_path: office_one_lvl_remeshed_rotated.obj
-#target_mesh_path: office_one_lvl_remeshed_rotated.obj
+complete_mesh_path: office_one_lvl_remeshed_rotated.obj
+target_mesh_path: office_one_lvl_remeshed_rotated.obj
 #target_mesh_path: office_one_lvl_target_rotated_and_remeshed.obj
 
 #complete_mesh_path: bad_homburg_remeshed.obj
-complete_mesh_path: bad_homburg_smaller_remeshed.obj
+#complete_mesh_path: bad_homburg_smaller_remeshed.obj
 #target_mesh_path:   bad_homburg_smaller_remeshed.obj
-target_mesh_path:   bad_homburg_target_remeshed.obj
+#target_mesh_path:   bad_homburg_target_remeshed.obj
 
 
 

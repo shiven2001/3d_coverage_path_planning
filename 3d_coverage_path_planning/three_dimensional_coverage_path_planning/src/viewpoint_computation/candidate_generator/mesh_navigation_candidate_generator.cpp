@@ -51,8 +51,8 @@ void MeshNavigationCandidateGenerator::initialize(ros::NodeHandle& pnh, std::sha
   else
   {
     // if the models have not been loaded but computed, also recompute and save the mesh map layers
-    mesh_map_ptr_->readMap(true);
-    mesh_map_ptr_->writeMapLayers();
+    mesh_map_ptr_->readMap();
+    // mesh_map_ptr_->writeMapLayers();
   }
 }
 
