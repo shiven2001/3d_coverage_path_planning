@@ -1,12 +1,7 @@
-# 3d_coverage_path_planning
+This is a fork from the orignial 3d_coverage_path_planning method. The original can be accessed here:
 
-Global path planning that generates an optimal path for an autonomous mobile ground robot to cover a prior 3D mesh model with a sensor payload.
+https://github.com/tu-darmstadt-ros-pkg/3d_coverage_path_planning
 
-<img src="docs/preview.png" width="700">
-
-Please cite our paper if you use this software as part of your scientific publication:
-
-```
 @INPROCEEDINGS{10018726,
   author={Becker, Katrin and Oehler, Martin and Von Stryk, Oskar},
   booktitle={2022 IEEE International Symposium on Safety, Security, and Rescue Robotics (SSRR)}, 
@@ -20,7 +15,6 @@ Please cite our paper if you use this software as part of your scientific public
 * [IEEE Xplore](https://ieeexplore.ieee.org/document/10018726)
 * [arXiv](https://arxiv.org/abs/2302.00968)
 
-
 <br><br>
 
 ## Data directories <a name="data_directories"></a>
@@ -31,10 +25,7 @@ The directory containing the model and the path can be given in the parameter "/
 #### Recorded data
 The recorded data are stored in the directory given in the parameter "/three_dimensional_coverage_path_planning/data_recording/recorded_data_directory".
 
-
 <br><br>
-
-
 
 ## Precomputations
 In the precomputations the viewpoints and the path is computed. The information are stored and loaded when the path shall be executed. In this way, the same path can be executed multiple times.
@@ -52,8 +43,6 @@ The preparations are not always necessary(e.g. if nothing changed in configurati
     * "precomputations_no_robot_three_dimensional_coverage_path_planning.launch" (if no simulation or robot is running)
 3. Start execution in FlexBE.
 
-
-
 <br>
 
 ## Execution of path
@@ -65,8 +54,6 @@ Here a precomputed path is loaded and executed. During the execution, the path i
     * "sim_three_dimensional_coverage_path_planning.launch" (with rviz)
     * "execute_three_dimensional_coverage_path_planning.launch" (without rviz)
 3. Start execution in FlexBE.
-
-
 
 <br><br>
 
@@ -91,7 +78,6 @@ The following parameters may need to be changed (in "model" namespace, unless ot
 * Mesh Map (top level namespace):
     * mesh_file
     * mesh map parameters
-
 
 <br>
 
@@ -119,8 +105,6 @@ Additionally, the following parameters may need to be changed:
 
 
 <br><br>
-
-
 
 ## Record model, compute plan and execute it
 
